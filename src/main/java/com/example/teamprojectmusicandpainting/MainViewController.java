@@ -5,18 +5,25 @@ import com.example.teamprojectmusicandpainting.service.Service;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,6 +47,12 @@ public class MainViewController {
     public Button stopButton;
     public Button addMusicToPlaylistButton;
     public Button deleteMusicFromPlaylistButton;
+
+    public AnchorPane anchorPanePaint;
+
+    public Button eraserButton;
+    public Button fillWithColorButton;
+    public Button clearPaneButton;
 
     public ColorPicker colorPicker;
 
@@ -267,8 +280,46 @@ public class MainViewController {
             }
         });
 
+        clearPaneButton.setOnAction(event -> {
+            if (canvas != null && gc != null) {
+                double width = canvas.getWidth();
+                double height = canvas.getHeight();
+
+                // Clear the canvas by filling it with a color
+                gc.setFill(Color.web("#f2f2f2"));
+                gc.fillRect(0, 0, width, height);
+            }
+        });
+
+        eraserButton.setOnAction(event -> {
+            gc.setStroke(Color.web("#f2f2f2"));
+        });
+
+        fillWithColorButton.setOnAction(event -> {
+            double width = canvas.getWidth();
+            double height = canvas.getHeight();
+
+            gc.setFill(colorPicker.getValue());
+            gc.fillRect(0,0, width, height);
+        });
+
         paintingPane.getChildren().add(canvas);
+
     }
+
+    @FXML
+    public void handleGoBack(ActionEvent actionEvent) throws IOException {
+        // revenirea la stage-ul initial
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("loginRegisterView.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 549, 700);
+        LoginSingupViewController loginSingupViewController = fxmlLoader.getController();
+        loginSingupViewController.setService(service);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
 }

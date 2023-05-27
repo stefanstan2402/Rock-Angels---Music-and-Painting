@@ -28,9 +28,9 @@
       <Button fx:id="stopButton" layoutX="1097.0" layoutY="249.0" mnemonicParsing="false" onAction="#stopSelectedSong" prefHeight="52.0" prefWidth="62.0" text="Stop" />
       <Button fx:id="addMusicToPlaylistButton" layoutX="993.0" layoutY="394.0" mnemonicParsing="false" onAction="#addMusicToPlaylist" prefHeight="52.0" prefWidth="151.0" text="Add To Playlist" />
       <Button fx:id="deleteMusicFromPlaylistButton" layoutX="993.0" layoutY="394.0" mnemonicParsing="false" onAction="#deleteMusicFromPlaylist" prefHeight="52.0" prefWidth="151.0" text="Delete from playlist" />
-      <VBox fx:id="paintVbox" layoutX="1018.0" layoutY="14.0" prefHeight="65.0" prefWidth="126.0" spacing="2.0">
+      <VBox fx:id="paintVbox" layoutX="902.0" layoutY="14.0" prefHeight="65.0" prefWidth="126.0" spacing="2.0">
          <children>
-            <ColorPicker fx:id="colorPicker" prefHeight="31.0" prefWidth="218.0" />
+            <ColorPicker fx:id="colorPicker" prefHeight="45.0" prefWidth="176.0" />
             <TextField fx:id="brushSizeTextField" prefHeight="30.0" prefWidth="147.0" />
          </children>
       </VBox>
@@ -39,5 +39,13 @@
           <TableColumn fx:id="musicNameColumn" prefWidth="-1.0" text="C1" />
         </columns>
       </TableView>
+      <AnchorPane fx:id="anchorPanePaint" layoutX="1031.0" layoutY="14.0" prefHeight="65.0" prefWidth="133.0">
+         <children>
+            <Button fx:id="eraserButton" layoutX="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" text="eraserBtn" />
+            <Button fx:id="fillWithColorButton" layoutX="7.0" layoutY="36.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" text="fillWithColorBtn" />
+            <Button fx:id="clearPaneButton" layoutX="67.0" layoutY="5.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="51.0" text="clearBtn" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="logOutButton" layoutX="28.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleGoBack" text="logOutButton" />
    </children>
 </AnchorPane>
