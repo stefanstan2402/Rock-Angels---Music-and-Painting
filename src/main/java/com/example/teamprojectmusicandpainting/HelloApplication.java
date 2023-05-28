@@ -24,7 +24,6 @@ public class HelloApplication extends Application {
         UserDbRepo userRepository = new UserDbRepo(connection, new UserValidator());
 
         Service service = new Service(userRepository);
-        System.out.println(service.findUserByEmail("a"));
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("loginRegisterView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 549, 700);

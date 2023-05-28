@@ -87,6 +87,8 @@ public class MainViewController {
         stopButton.setVisible(false);
 
         paintVbox.setVisible(false);
+
+        anchorPanePaint.setVisible(false);
     }
 
     public List<File> getAllMusic(){
@@ -166,6 +168,8 @@ public class MainViewController {
 
         paintVbox.setVisible(false);
 
+        anchorPanePaint.setVisible(false);
+
         List<File> musicListFile = getAllMusic();
         List<String> musicNames = new ArrayList<>();
         for (File file : musicListFile) {
@@ -195,6 +199,8 @@ public class MainViewController {
 
         paintVbox.setVisible(false);
 
+        anchorPanePaint.setVisible(false);
+
         System.out.println("Prima " + loggedUser.getUserMusicPlaylist());
 
         /* user_music_playlist it s a string and we split music names after "," */
@@ -222,7 +228,9 @@ public class MainViewController {
 
     public void deleteMusicFromPlaylist() {
         String musicToDelete = selectedMusicTitle;
+
         musicToDelete = "," + musicToDelete;
+
         String userMusicPlaylist = loggedUser.getUserMusicPlaylist();
         System.out.println(userMusicPlaylist);
         userMusicPlaylist = userMusicPlaylist.replace(musicToDelete, "");
@@ -244,6 +252,9 @@ public class MainViewController {
         stopButton.setVisible(false);
 
         paintVbox.setVisible(true);
+
+        anchorPanePaint.setVisible(true);
+
 
 
         Canvas canvas = new Canvas(935.0, 679.0);
@@ -310,6 +321,7 @@ public class MainViewController {
     @FXML
     public void handleGoBack(ActionEvent actionEvent) throws IOException {
         // revenirea la stage-ul initial
+        stopSelectedSong();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("loginRegisterView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 549, 700);
@@ -319,7 +331,4 @@ public class MainViewController {
         stage.setScene(scene);
         stage.show();
     }
-
-
-
 }

@@ -5,39 +5,98 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="765.0" prefWidth="1177.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.teamprojectmusicandpainting.MainViewController">
    <children>
-      <Text layoutX="23.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My name" />
-      <Pane fx:id="paintingPane" layoutX="232.0" layoutY="77.0" prefHeight="679.0" prefWidth="924.0" />
-      <Button fx:id="allMusicButton" layoutX="54.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleShowMusic" prefHeight="52.0" prefWidth="176.0" text="Music" />
-      <Button layoutX="54.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleShowPaintingPane" prefHeight="52.0" prefWidth="176.0" text="Paint" />
-      <Button fx:id="musicPlaylistButton" layoutX="54.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleShowUserPlaylist" prefHeight="52.0" prefWidth="176.0" text="My playlist" />
-      <TableView fx:id="userPlaylistTabelView" layoutX="433.0" layoutY="69.0" prefHeight="687.0" prefWidth="460.0">
+      <ImageView fitHeight="765.0" fitWidth="1177.0">
+         <image>
+            <Image url="@photos/Color-Blur-Background.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="52.0" fitWidth="51.0" layoutX="51.0" layoutY="40.0">
+         <image>
+            <Image url="@photos/accountLogo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="112.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My name">
+         <font>
+            <Font name="JetBrains Mono Regular" size="19.0" />
+         </font></Text>
+      <Button fx:id="allMusicButton" layoutX="54.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleShowMusic" prefHeight="52.0" prefWidth="176.0" style="-fx-background-color: white; -fx-font-weight: 900; -fx-text-alignment: right;" text="Music" textAlignment="CENTER" textFill="#ff8000">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button layoutX="54.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleShowPaintingPane" prefHeight="52.0" prefWidth="176.0" style="-fx-background-color: white;" text="Paint" />
+      <Button fx:id="musicPlaylistButton" layoutX="54.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleShowUserPlaylist" prefHeight="52.0" prefWidth="176.0" style="-fx-background-color: white;" text="My playlist" />
+      <TableView fx:id="userPlaylistTabelView" layoutX="409.0" layoutY="69.0" prefHeight="490.0" prefWidth="425.0">
          <columns>
             <TableColumn fx:id="userPlaylistColumn" prefWidth="-1.0" text="C1" />
          </columns>
       </TableView>
-      <Button layoutX="54.0" layoutY="478.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="176.0" text="Search photo" />
-      <Text layoutX="28.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log out" />
-      <Button fx:id="playButton" layoutX="1097.0" layoutY="138.0" mnemonicParsing="false" onAction="#playSelectetSong" prefHeight="52.0" prefWidth="62.0" text="Play" />
-      <Button fx:id="stopButton" layoutX="1097.0" layoutY="249.0" mnemonicParsing="false" onAction="#stopSelectedSong" prefHeight="52.0" prefWidth="62.0" text="Stop" />
       <Button fx:id="addMusicToPlaylistButton" layoutX="993.0" layoutY="394.0" mnemonicParsing="false" onAction="#addMusicToPlaylist" prefHeight="52.0" prefWidth="151.0" text="Add To Playlist" />
       <Button fx:id="deleteMusicFromPlaylistButton" layoutX="993.0" layoutY="394.0" mnemonicParsing="false" onAction="#deleteMusicFromPlaylist" prefHeight="52.0" prefWidth="151.0" text="Delete from playlist" />
-      <VBox fx:id="paintVbox" layoutX="1018.0" layoutY="14.0" prefHeight="65.0" prefWidth="126.0" spacing="2.0">
+      <Button fx:id="playButton" layoutX="470.0" layoutY="621.0" mnemonicParsing="false" onAction="#playSelectetSong" prefHeight="65.0" prefWidth="119.0" style="-fx-background-color: white;" textFill="#2c5dff">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="52.0" fitWidth="64.0">
+               <image>
+                  <Image url="@photos/play.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="stopButton" layoutX="663.0" layoutY="623.0" mnemonicParsing="false" onAction="#stopSelectedSong" prefHeight="65.0" prefWidth="119.0" style="-fx-background-color: white;">
+         <graphic>
+            <ImageView fitHeight="53.0" fitWidth="57.0">
+               <image>
+                  <Image url="@photos/stop.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <VBox fx:id="paintVbox" layoutX="902.0" layoutY="14.0" prefHeight="65.0" prefWidth="126.0" spacing="2.0">
          <children>
-            <ColorPicker fx:id="colorPicker" prefHeight="31.0" prefWidth="218.0" />
+            <ColorPicker fx:id="colorPicker" prefHeight="45.0" prefWidth="176.0" />
             <TextField fx:id="brushSizeTextField" prefHeight="30.0" prefWidth="147.0" />
          </children>
       </VBox>
-      <TableView fx:id="allMusicTableView" layoutX="424.0" layoutY="66.0" prefHeight="687.0" prefWidth="478.0">
+      <Pane fx:id="paintingPane" layoutX="232.0" layoutY="77.0" prefHeight="679.0" prefWidth="924.0" />
+      <TableView fx:id="allMusicTableView" layoutX="392.0" layoutY="55.0" prefHeight="515.0" prefWidth="460.0">
         <columns>
           <TableColumn fx:id="musicNameColumn" prefWidth="-1.0" text="C1" />
         </columns>
       </TableView>
+      <AnchorPane fx:id="anchorPanePaint" layoutX="1031.0" layoutY="14.0" prefHeight="65.0" prefWidth="133.0">
+         <children>
+            <Button fx:id="eraserButton" layoutX="7.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" text="eraserBtn" />
+            <Button fx:id="fillWithColorButton" layoutX="7.0" layoutY="36.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="51.0" text="fillWithColorBtn" />
+            <Button fx:id="clearPaneButton" layoutX="67.0" layoutY="5.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="51.0" text="clearBtn" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="logOutButton" layoutX="64.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleGoBack" prefHeight="52.0" prefWidth="170.0" style="-fx-background-color: white;" text="Log Out" />
+      <ImageView fitHeight="52.0" fitWidth="96.0" layoutX="54.0" layoutY="145.0" preserveRatio="true">
+         <image>
+            <Image url="@photos/music.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="32.0" layoutX="61.0" layoutY="249.0">
+         <image>
+            <Image url="@photos/playlist.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="38.0" layoutX="74.0" layoutY="655.0">
+         <image>
+            <Image url="@photos/logout.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
