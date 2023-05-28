@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -65,6 +66,8 @@ public class MainViewController {
 
     public TextField brushSizeTextField;
     public VBox paintVbox;
+
+    public ImageView framePane;
 
 
     public void setLoggedUser(User loggedUser) {
@@ -257,7 +260,7 @@ public class MainViewController {
 
 
 
-        Canvas canvas = new Canvas(935.0, 679.0);
+        Canvas canvas = new Canvas(898.0, 626.0);
         gc = canvas.getGraphicsContext2D();
 
         colorPicker.valueProperty().addListener((observable, oldValue, newValue) -> {
