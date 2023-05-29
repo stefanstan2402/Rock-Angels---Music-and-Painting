@@ -5,7 +5,7 @@ import com.example.teamprojectmusicandpainting.domain.User;
 import java.util.Objects;
 
 public class UserValidator implements Validator<User>{
-
+    @Override
     public void validate(User entity) throws ValidationException {
         String err="";
 
@@ -19,5 +19,4 @@ public class UserValidator implements Validator<User>{
             throw new ValidationException(err);
         }
     }
-
 }

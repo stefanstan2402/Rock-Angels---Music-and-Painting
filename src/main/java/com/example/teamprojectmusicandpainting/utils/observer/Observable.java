@@ -8,4 +8,5 @@ public interface Observable<E extends Event> {
     void addObserver(Observer<E> e);
 
     void notifyObserver(ChangeEvent t);
+    void notifyObserver(E t);
 }

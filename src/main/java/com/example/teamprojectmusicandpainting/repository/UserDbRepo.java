@@ -23,6 +23,7 @@ public class UserDbRepo implements Repo<Long, User>, Observable<Event> {
         this.observers = new ArrayList<>();
     }
 
+    @Override
     public User findOne(Long id) {
         User user = null;
         try {
@@ -37,13 +38,14 @@ public class UserDbRepo implements Repo<Long, User>, Observable<Event> {
                 user.setEmail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
                 user.setMyPlaylist(resultSet.getString("user_music_playlist"));
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return  user;
     }
-
+    @Override
     public List<User> findAll() {
         List<User> usersList = new ArrayList<>();
         try{
