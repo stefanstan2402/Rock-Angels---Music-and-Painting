@@ -28,9 +28,9 @@
       <Button fx:id="registerButton" graphicTextGap="0.0" layoutX="222.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleRegisterUserScene" style="-fx-background-color: transparent;" text="Sign up here!" textFill="#68ffcf" />
       <Pane layoutX="199.0" layoutY="7.0" prefHeight="169.0" prefWidth="152.0">
          <children>
-            <ImageView fitHeight="154.0" fitWidth="122.0" layoutX="15.0" layoutY="8.0">
+            <ImageView fitHeight="203.0" fitWidth="225.0" layoutX="-36.0">
                <image>
-                  <Image url="@photos/logo7purple.png" />
+                  <Image url="@photos/loggoPng.png" />
                </image>
             </ImageView>
          </children>

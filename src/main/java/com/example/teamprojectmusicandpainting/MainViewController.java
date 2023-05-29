@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -49,11 +50,15 @@ public class MainViewController {
     public Button addMusicToPlaylistButton;
     public Button deleteMusicFromPlaylistButton;
 
+    public Label loggedUserNameLabel;
+
     public AnchorPane anchorPanePaint;
 
     public Button eraserButton;
     public Button fillWithColorButton;
     public Button clearPaneButton;
+
+    public Text loggedUserNameText;
 
     public ColorPicker colorPicker;
 
@@ -76,6 +81,7 @@ public class MainViewController {
 
     public void setService(Service service, User user) {
         this.service = service;
+        loggedUserNameLabel.setText(loggedUser.getFirst_name() + " " + loggedUser.getLast_name());
     }
 
     @FXML
@@ -92,6 +98,8 @@ public class MainViewController {
         paintVbox.setVisible(false);
 
         anchorPanePaint.setVisible(false);
+
+        framePane.setVisible(false);
     }
 
     public List<File> getAllMusic(){
@@ -115,7 +123,7 @@ public class MainViewController {
         allMusicTableView.setOnMouseClicked(event -> {
             int rowIndex = allMusicTableView.getSelectionModel().getSelectedIndex();
 
-            // Accesăm prima coloană și valoarea ei
+            // We access the first column and its value
             TableColumn<String, String> firstColumn = (TableColumn<String, String>) allMusicTableView.getColumns().get(0);
             selectedMusicTitle = firstColumn.getCellData(rowIndex);
 
@@ -124,7 +132,7 @@ public class MainViewController {
         userPlaylistTabelView.setOnMouseClicked(event -> {
             int rowIndex = userPlaylistTabelView.getSelectionModel().getSelectedIndex();
 
-            // Accesăm prima coloană și valoarea ei
+            // We access the first column and its value
             TableColumn<String, String> firstColumn = (TableColumn<String, String>) userPlaylistTabelView.getColumns().get(0);
             selectedMusicTitle = firstColumn.getCellData(rowIndex);
 
@@ -145,6 +153,7 @@ public class MainViewController {
                     if (file.getName().equals(selectedMusicTitle)){
                         media = new Media(file.toURI().toString());
                         mediaPlayer = new MediaPlayer(media);
+                        mediaPlayer.setVolume(0.2);
                         mediaPlayer.play();
                     }
                 }
@@ -172,6 +181,8 @@ public class MainViewController {
         paintVbox.setVisible(false);
 
         anchorPanePaint.setVisible(false);
+
+        framePane.setVisible(false);
 
         List<File> musicListFile = getAllMusic();
         List<String> musicNames = new ArrayList<>();
@@ -204,6 +215,8 @@ public class MainViewController {
 
         anchorPanePaint.setVisible(false);
 
+        framePane.setVisible(false);
+
         System.out.println("Prima " + loggedUser.getUserMusicPlaylist());
 
         /* user_music_playlist it s a string and we split music names after "," */
@@ -221,7 +234,7 @@ public class MainViewController {
     }
 
     public void addMusicToPlaylist(){
-        /*Titlul melodiei selectate il adatug in user_music_playlist*/
+        /*I add the title of the selected song to the user music playlist*/
 
         String userMusicPlaylist = loggedUser.getUserMusicPlaylist();
         userMusicPlaylist = userMusicPlaylist + "," + selectedMusicTitle;
@@ -235,9 +248,8 @@ public class MainViewController {
         musicToDelete = "," + musicToDelete;
 
         String userMusicPlaylist = loggedUser.getUserMusicPlaylist();
-        System.out.println(userMusicPlaylist);
-        userMusicPlaylist = userMusicPlaylist.replace(musicToDelete, "");
-        System.out.println(userMusicPlaylist);
+
+        userMusicPlaylist = userMusicPlaylist.replace(musicToDelete, "");;
         loggedUser.setMyPlaylist(userMusicPlaylist);
         service.updateUserMusicPlaylist(loggedUser, userMusicPlaylist);
 
@@ -258,10 +270,11 @@ public class MainViewController {
 
         anchorPanePaint.setVisible(true);
 
-
+        framePane.setVisible(true);
 
         Canvas canvas = new Canvas(898.0, 626.0);
         gc = canvas.getGraphicsContext2D();
+        paintingPane.setStyle("-fx-background-color: f2f2f2;");
 
         colorPicker.valueProperty().addListener((observable, oldValue, newValue) -> {
             gc.setStroke(newValue);
@@ -323,7 +336,7 @@ public class MainViewController {
 
     @FXML
     public void handleGoBack(ActionEvent actionEvent) throws IOException {
-        // revenirea la stage-ul initial
+        // Back to initial stage
         stopSelectedSong();
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("loginRegisterView.fxml"));

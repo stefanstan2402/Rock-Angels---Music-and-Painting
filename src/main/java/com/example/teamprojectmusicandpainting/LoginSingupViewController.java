@@ -24,7 +24,6 @@ public class LoginSingupViewController {
     public Button registerButton;
     private Service service;
 
-    private Connection connection;
     @FXML
     public TextField emailTextField;
     @FXML
@@ -39,7 +38,7 @@ public class LoginSingupViewController {
         String password = passwordTextField.getText();
 
         User user =  service.findUserByEmail(email);
-        System.out.println(user);
+
         if (user.getId() != null && user.getPassword().equals(password)){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("mainView.fxml"));
             Parent root = loader.load();

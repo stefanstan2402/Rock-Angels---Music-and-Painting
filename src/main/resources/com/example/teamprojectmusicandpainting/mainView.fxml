@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -11,7 +12,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="765.0" prefWidth="1177.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.teamprojectmusicandpainting.MainViewController">
    <children>
@@ -25,10 +25,6 @@
             <Image url="@photos/accountLogo.png" />
          </image>
       </ImageView>
-      <Text layoutX="112.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My name">
-         <font>
-            <Font name="JetBrains Mono Regular" size="19.0" />
-         </font></Text>
       <Button fx:id="allMusicButton" layoutX="54.0" layoutY="138.0" mnemonicParsing="false" onAction="#handleShowMusic" prefHeight="52.0" prefWidth="176.0" style="-fx-background-color: white;" text="Music" textAlignment="CENTER" textFill="#ff8000">
          <font>
             <Font name="Serif Bold" size="20.0" />
@@ -100,12 +96,14 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button fx:id="clearPaneButton" layoutX="73.0" layoutY="29.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="53.0" />
-            <ImageView fitHeight="36.0" fitWidth="31.0" layoutX="84.0" layoutY="34.0">
-               <image>
-                  <Image url="@photos/recycleBinPNG.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="clearPaneButton" layoutX="73.0" layoutY="29.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="53.0">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="31.0">
+                     <image>
+                        <Image url="@photos/recycleBinPNG.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
          </children>
       </AnchorPane>
       <Button fx:id="logOutButton" layoutX="64.0" layoutY="648.0" mnemonicParsing="false" onAction="#handleGoBack" prefHeight="52.0" prefWidth="170.0" style="-fx-background-color: white;" text="Log Out">
@@ -143,5 +141,10 @@
             <Image url="@photos/frame2PNG" />
          </image>
       </ImageView>
+      <Label fx:id="loggedUserNameLabel" layoutX="112.0" layoutY="50.0" prefHeight="39.0" prefWidth="255.0" text="My name">
+         <font>
+            <Font name="Serif Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

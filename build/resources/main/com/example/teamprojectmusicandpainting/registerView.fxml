@@ -38,9 +38,9 @@
       </Button>
       <Pane layoutX="216.0" layoutY="19.0" prefHeight="143.0" prefWidth="120.0">
          <children>
-            <ImageView fitHeight="117.0" fitWidth="99.0" layoutX="11.0" layoutY="13.0">
+            <ImageView fitHeight="198.0" fitWidth="200.0" layoutX="-40.0" layoutY="-21.0">
                <image>
-                  <Image url="@photos/logo7v2.png" />
+                  <Image url="@photos/loggoPng.png" />
                </image>
             </ImageView>
          </children>
